@@ -1,8 +1,11 @@
+const features = ["mass", "block", "critical"];
+
 function funcCalc() {
-    let mass = document.getElementById("mass").value;
-    let block = document.getElementById("block").value;
-    let critical = document.getElementById("critical").value;
-    document.getElementById("total").innerHTML = mass * block * critical
+  let weight = 1;
+  for (let step = 0; step < features.length; step++) {
+    weight *= document.getElementById(features[step]).value;
+  }
+    document.getElementById("total").innerHTML = weight
 }
 
 const inputElements = document.querySelectorAll('[data-action="calculate"]');
@@ -23,4 +26,28 @@ function copyToClipboard() {
 const copyElement = document.querySelectorAll('[data-action="copyElement"]');
 copyElement.forEach((element) => {
     element.addEventListener('click', window.copyToClipboard)
+});
+
+
+// Description
+function copyDescriptionToClipboard() {
+  let description = "*Weight " + document.getElementById("total").textContent + "*\n";
+
+  for (let step = 0; step < 3; step++) {
+    let feature = document.getElementById(features[step]);
+    description += "\n" + features[step] + ": " + feature.value;
+  }
+
+  let area = document.createElement('textarea');
+  document.body.appendChild(area);
+  area.value = description;
+  area.select();
+
+  document.execCommand("copy");
+  document.body.removeChild(area);
+}
+
+const copyDescriprionElement = document.querySelectorAll('[data-action="copyDescription"]');
+copyDescriprionElement.forEach((element) => {
+    element.addEventListener('click', window.copyDescriptionToClipboard)
 });

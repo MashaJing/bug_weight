@@ -17,28 +17,34 @@
 
     <form name="formCalc">
 
-        <h2>Массовость</h2>
+        <h2 title="Сколько пользователей это видит?">Массовость</h2>
         <select id="mass" data-action="calculate">
             <option value= 1>Единичная ошибка</option>
             <option value= 2>Затрагивает группу пользователей</option>
             <option value= 3>Затрагивает большинство пользователей</option>
         </select>
 
-        <h2>Насколько блокирует</h2>
+        <h2 title="Насколько блокирует данный юзер флоу?">Насколько блокирует</h2>
         <select id="block" data-action="calculate">
             <option value= 1>Не блокирует</option>
             <option value= 2>Блокирует, но есть обходное решение</option>
             <option value= 3>Блокирует полностью</option>
         </select>
 
-        <h2>Критичность области, в которой возникла ошибка</h2>
+        <h2 title="Насколько критична область, в которой возникла ошибка?">Критичность</h2>
         <select id="critical" data-action="calculate">
             <option value= 1>Нормальная</option>
+            <!-- стоит ли вводить среднюю? -->
+            <option value= 2>Средняя</option>
             <option value= 3>Критичная</option>
+            <option value= 4>Теряем прибыль</option>
         </select>
     </form>
-<div id="total" data-action="copyElement">1</div>
-<p id="copyText">Click to Copy</p>
+
+    <div id="total" data-action="copyElement">1</div>
+    <p id="copyText">Click to Copy</p>
+
+    <div id="total_description" data-action="copyDescription">Copy Description</div>
 
 <script src="popup.js"></script>
 </body>
